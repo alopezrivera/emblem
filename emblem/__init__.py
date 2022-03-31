@@ -8,4 +8,4 @@ Emblem
 
 from emblem.coverage import coverage
 
-__version__ = '0.0.1a'
+__version__ = '0.0.1a1'

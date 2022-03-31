@@ -54,7 +54,7 @@ def coverage(coverage,
     """
 
     # Determine contents of coverage string
-    percentage = re.findall('\d+\.*\d+', coverage)
+    percentage = re.findall('\d+\.*\d*', coverage)
 
     if not percentage: 
         percentage = 0

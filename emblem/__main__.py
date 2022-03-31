@@ -18,9 +18,8 @@ def main():
 
     # Declare arguments
     CLI.add_argument(
-        'coverage', 
-        nargs='?', 
-        default='0',
+        'coverage',
+        help='code coverage percentage'
     )
     CLI.add_argument(
         '--colors',
@@ -28,8 +27,8 @@ def main():
         type=str,
         default=['#b00909', '#3ade65'],
         required=False,
-        help='Colors from which to generate a linear\
-                     segmented colormap, low to high.'
+        help='colors from which to generate a linear\
+              segmented colormap, low to high'
     )
     CLI.add_argument(
         '--cmap',
@@ -37,7 +36,7 @@ def main():
         type=str,
         default=False,
         required=False,
-        help='Matplotlib colormap.'
+        help='matplotlib colormap'
     )
 
     # Parse arguments

@@ -20,7 +20,7 @@ setuptools.setup(
     },
     packages=setuptools.find_packages(),
     install_requires=[
-        "matplotlib>=3.5.1",
+        "matplotlib>=3.3.4",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

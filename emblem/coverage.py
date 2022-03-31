@@ -65,7 +65,7 @@ def coverage(
         label = 'Pytest'
     else:
         percentage = float(percentage[0])
-        coverage = f'{percentage}%20%25'
+        coverage = f'{percentage} %25'
 
     if cmap is not None:
         cmap = get_cmap(cmap)
@@ -78,4 +78,6 @@ def coverage(
     style = f"?style={style}" if style else ""
     logo  = f"&logo={logo}" if logo else ""
     
-    return f'https://img.shields.io/badge/{label}-{coverage}-{color}{style}{logo}'
+    shield = f'https://img.shields.io/badge/{label}-{coverage}-{color}{style}{logo}'
+
+    return shield.replace(' ', '%20')

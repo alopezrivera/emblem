@@ -12,37 +12,47 @@ import argparse
 from emblem import coverage
 
 
+def add(cli, name, help='', nargs=1):
+    cli.add_argument(
+        f'--{name}',
+        nargs=nargs,
+        default=None,
+        help=help
+    )
+
+
 def main():
 
     CLI = argparse.ArgumentParser()
 
-    # Declare arguments
     CLI.add_argument(
         'coverage',
         help='code coverage percentage'
     )
-    CLI.add_argument(
-        '--colors',
-        nargs='*',
-        type=str,
-        default=['#b00909', '#3ade65'],
-        required=False,
-        help='colors from which to generate a linear\
-              segmented colormap, low to high'
-    )
-    CLI.add_argument(
-        '--cmap',
-        nargs=1,
-        type=str,
-        default=False,
-        required=False,
-        help='matplotlib colormap'
-    )
 
-    # Parse arguments
-    args = CLI.parse_args()
+    # Declare arguments
+    args = {'label':    ['badge label'],
+            'style':    ['badge style'],
+            'logo':     ['badge logo'],
+            'colors':   ['colors from which to generate a linear segmented colormap, low to high', '*'],
+            'cmap':     ['matplotlib colormap']}
+    for arg in args.keys():
+        add(CLI, arg, *args[arg])
 
-    print(coverage(args.coverage, colors=args.colors, cmap=args.cmap[0] if args.cmap else None))
+    # Parse input
+    _input = CLI.parse_args()
+    
+    # Create input dictionary
+    kwargs = {}
+
+    for arg in args.keys():
+        if getattr(_input, arg) is not None:
+            v = getattr(_input, arg)
+            if isinstance(v, list) and len(v) == 1:
+                v = v[0]
+            kwargs[arg] = v
+
+    print(coverage(_input.coverage, **kwargs))
 
 
 if __name__ == '__main__':

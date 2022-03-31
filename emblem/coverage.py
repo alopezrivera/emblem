@@ -13,23 +13,27 @@ from matplotlib.cm import get_cmap
 from matplotlib.colors import to_rgb, to_hex, LinearSegmentedColormap
 
 
-def custom_map(colors=['darkred', 'lightgreen'],
-               weights=None):
+def custom_map(
+    colors= ['darkred', 'lightgreen'],
+    weights=None
+    ):
 
     if weights is not None: colors = list(zip(weights, colors))
 
-    m = LinearSegmentedColormap.from_list(colors=colors[::-1], 
+    m = LinearSegmentedColormap.from_list(colors=colors, 
                                           name='coverageMap')
 
     return m
 
 
-def coverage(coverage,
-             label='Coverage',
-             style='for-the-badge',
-             logo= 'pytest',
-             colors=None,
-             cmap=None):
+def coverage(
+    coverage,
+    label= 'Coverage',
+    style= 'for-the-badge',
+    logo=  'pytest',
+    colors=['#b00909', '#3ade65'],
+    cmap=  None
+    ):
     """
     ``label``
     Badge label

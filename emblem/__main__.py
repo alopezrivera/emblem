@@ -35,7 +35,7 @@ def main():
         '--cmap',
         nargs=1,
         type=str,
-        default=None,
+        default=False,
         required=False,
         help='Matplotlib colormap.'
     )
@@ -43,7 +43,7 @@ def main():
     # Parse arguments
     args = CLI.parse_args()
 
-    print(coverage(args.coverage, colors=args.colors, cmap=args.cmap[0]))
+    print(coverage(args.coverage, colors=args.colors, cmap=args.cmap[0] if args.cmap else None))
 
 
 if __name__ == '__main__':

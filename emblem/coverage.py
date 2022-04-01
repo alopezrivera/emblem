@@ -65,7 +65,6 @@ def coverage(
 
     if not percentage: 
         percentage = 0
-        label = 'Pytest'
     else:
         percentage = float(percentage[0])
         coverage = f'{percentage} %25'

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="emblem",
-    version="1.0.0.a0",
+    version="1.0.0",
     author="Antonio Lopez Rivera",
     author_email="antonlopezr99@gmail.com",
     description="shields.io + colormaps",

@@ -21,6 +21,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         "matplotlib>=3.3.4",
+        "requests>=2.27.1"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

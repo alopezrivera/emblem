@@ -1,12 +1,11 @@
 import setuptools
-from emblem import __version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="emblem",
-    version=__version__,
+    version="1.0.0.a0",
     author="Antonio Lopez Rivera",
     author_email="antonlopezr99@gmail.com",
     description="shields.io + colormaps",

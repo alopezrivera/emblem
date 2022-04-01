@@ -30,14 +30,19 @@ def main():
         help='code coverage percentage'
     )
 
-    # Declare arguments
-    args = {'label':    ['badge label'],
-            'style':    ['badge style'],
-            'logo':     ['badge logo'],
-            'colors':   ['colors from which to generate a linear segmented colormap, low to high', '*'],
-            'cmap':     ['matplotlib colormap']}
-    for arg in args.keys():
-        add(CLI, arg, *args[arg])
+    # Emblem arguments
+    e_args = {'label':    ['badge label'],
+              'style':    ['badge style'],
+              'logo':     ['badge logo'],
+              'fname':    ['svg file name'],
+              'colors':   ['colors from which to generate a linear segmented colormap, low to high', '*'],
+              'cmap':     ['matplotlib colormap']}
+    # Runtime arguments
+    r_args = {'silence':  ['print shields.io url']}
+
+    _args = {**e_args, **r_args}
+    for arg in _args.keys():
+        add(CLI, arg, *_args[arg])
 
     # Parse input
     _input = CLI.parse_args()
@@ -45,14 +50,18 @@ def main():
     # Create input dictionary
     kwargs = {}
 
-    for arg in args.keys():
+    for arg in e_args.keys():
         if getattr(_input, arg) is not None:
             v = getattr(_input, arg)
             if isinstance(v, list) and len(v) == 1:
                 v = v[0]
             kwargs[arg] = v
 
-    print(coverage(_input.coverage, **kwargs))
+    # Emblem
+    q = coverage(_input.coverage, **kwargs)
+
+    if not _input.silence:
+        print(f'\n{q}\n')
 
 
 if __name__ == '__main__':

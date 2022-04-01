@@ -12,6 +12,8 @@ import re
 from matplotlib.cm import get_cmap
 from matplotlib.colors import to_rgb, to_hex, LinearSegmentedColormap
 
+from emblem.utilities import save_svg
+
 
 def custom_map(
     colors= ['darkred', 'lightgreen'],
@@ -31,6 +33,7 @@ def coverage(
     label= 'Coverage',
     style= 'for-the-badge',
     logo=  'pytest',
+    fname ='./coverage.svg',
     colors=['#b00909', '#3ade65'],
     cmap=  None
     ):
@@ -80,4 +83,6 @@ def coverage(
     
     shield = f'https://img.shields.io/badge/{label}-{coverage}-{color}{style}{logo}'
 
-    return shield.replace(' ', '%20')
+    save_svg(shield, fname)
+
+    return shield

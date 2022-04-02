@@ -28,18 +28,19 @@ def custom_map(
     return m
 
 
-def coverage(
+def emblem(
     coverage,
     label= 'Coverage',
     style= 'for-the-badge',
     logo=  'pytest',
-    fname ='./coverage.svg',
+    fname ='./shield.svg',
     colors=['#b00909',
             '#ff8f05',
             '#adadad',
             '#3faefc',
             '#3ade65'],
-    cmap=  None
+    cmap=  None,
+    color= None,
     ):
     """
     ``label``
@@ -67,7 +68,7 @@ def coverage(
     # Determine contents of coverage string
     percentage = re.findall('\d+\.*\d*', coverage)
 
-    if not percentage: 
+    if not percentage:
         percentage = 0
     else:
         percentage = float(percentage[0])
@@ -78,7 +79,7 @@ def coverage(
     else:
         cmap = custom_map(colors)
 
-    color = to_hex(cmap(percentage/100))[1:]
+    color = to_hex(cmap(percentage/100))[1:] if color is None else color
     
     # Syntax
     style = f"?style={style}" if style else ""

@@ -6,4 +6,4 @@ Emblem
 ------
 """
 
-from emblem.coverage import coverage
+from emblem.emblem import emblem

@@ -9,7 +9,7 @@ CLI
 
 import argparse
 
-from emblem import coverage
+from emblem import emblem
 
 
 def add(cli, name, help='', nargs=1):
@@ -36,7 +36,8 @@ def main():
               'logo':     ['badge logo'],
               'fname':    ['svg file name'],
               'colors':   ['colors from which to generate a linear segmented colormap, low to high', '*'],
-              'cmap':     ['matplotlib colormap']}
+              'cmap':     ['matplotlib colormap'],
+              'color':    ['override color']}
     # Runtime arguments
     r_args = {'silence':  ['print shields.io url']}
 
@@ -58,7 +59,7 @@ def main():
             kwargs[arg] = v
 
     # Emblem
-    q = coverage(_input.coverage, **kwargs)
+    q = emblem(_input.coverage, **kwargs)
 
     if not _input.silence:
         print(f'\n{q}\n')

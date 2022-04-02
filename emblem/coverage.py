@@ -34,7 +34,11 @@ def coverage(
     style= 'for-the-badge',
     logo=  'pytest',
     fname ='./coverage.svg',
-    colors=['#b00909', '#3ade65'],
+    colors=['#b00909',
+            '#ff8f05',
+            '#adadad',
+            '#3faefc',
+            '#3ade65'],
     cmap=  None
     ):
     """
@@ -80,7 +84,7 @@ def coverage(
     style = f"?style={style}" if style else ""
     logo  = f"&logo={logo}" if logo else ""
     
-    shield = f'https://img.shields.io/badge/{label}-{coverage}-{color}{style}{logo}'
+    shield = f'https://img.shields.io/badge/{label}-{coverage}-{color}{style}{logo}'.replace(' ', '%20')
 
     save_svg(shield, fname)
 
